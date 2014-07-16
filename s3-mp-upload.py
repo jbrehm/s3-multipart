@@ -112,9 +112,9 @@ def main(src, dest, num_processes=2, split=50, force=False, reduced_redundancy=F
     size = src.tell()
     num_parts = int(ceil(float(size) / part_size))
 
-    logger.info("Part Size: {}".format(part_size))
-    logger.info("File Size: {}".format(size))
-    logger.info("Num Parts: {}".format(num_parts))
+    logger.debug("Part Size: {0}".format(part_size))
+    logger.debug("File Size: {0}".format(size))
+    logger.debug("Num Parts: {0}".format(num_parts))
 
     # If file is less than 5M, just upload it directly
     if size < 5*1024*1024:
