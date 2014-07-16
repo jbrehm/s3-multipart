@@ -21,13 +21,13 @@ def main(uri, cancel):
     mpul = bucket.list_multipart_uploads()
     for mpu in mpul:
         if not cancel:
-            print('s3-mp-cleanup.py s3://{}/{} -c {}  # {} {}'.format(mpu.bucket.name, mpu.key_name, mpu.id, mpu.initiator.display_name, mpu.initiated))
+            print('s3-mp-cleanup.py s3://{0}/{1} -c {2}  # {3} {4}'.format(mpu.bucket.name, mpu.key_name, mpu.id, mpu.initiator.display_name, mpu.initiated))
         elif cancel == mpu.id:
             bucket.cancel_multipart_upload(mpu.key_name, mpu.id)
             break
     else:
         if cancel:
-            print("No multipart upload {} found for {}".format(cancel, uri))
+            print("No multipart upload {0} found for {1}".format(cancel, uri))
             sys.exit(1)
 
 
